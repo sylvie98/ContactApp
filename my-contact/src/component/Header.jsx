@@ -2,31 +2,31 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <section>
-        <div className='flex  items-center  justify-around mt-10'>
+    <section className='flex  items-center  justify-around mt-10 flex-col'>
+        <div>
       <p>ADD CONTACT</p>
       {/* <button className=' bg-black text-white'>Add new</button> */}
       
     </div>
-    <div className='flex flex-col gap-4 justify-center items-center mt-10'>
+    <div className='flex flex-col gap-5'>
       <label>Full Name</label>
-    <div className='rounded-lg  border border-gray-400 w-1/2'>
+    <div className='rounded-lg  border border-gray-400 w-full h-10'>
     <input type='text' name='name'/>
     </div>
     <label>Email</label>
-    <div className='rounded-lg  border border-gray-400 w-1/2'>
+    <div className='rounded-lg  border border-gray-400  w-full h-10'>
     <input type='text' name='name'/>
     </div>
     <label>Phone</label>
-    <div className='rounded-lg  border border-gray-400 w-1/2'>
+    <div className='rounded-lg  border border-gray-400 w-full h-10'>
     <input type='text' name='name'/>
     </div>
     <label>Picture</label>
-    <div className='rounded-lg  border border-gray-400 w-1/2'>
-    <input type='text' name='name'/><button className='border border-gray-400 mt-4 mb-4'>Choose File</button> <button>No File Choosen</button>
+    <div className='rounded-lg  border border-gray-400 w-full h-10'>
+    <input type='text' name='name'/><button className='border border-gray-400 mt-2'>Choose File</button> <button>No File Choosen</button>
    
     </div>
-    <div className='rounded-lg border border-gray-400 w-1/2 flex justify-center items-center bg-slate-500 text-white'>
+    <div className='rounded-lg border border-gray-400 w-full flex justify-center items-center bg-slate-500 text-white h-10 mt-5'>
     <input type='submit' name='name' value="Create"/>
     </div>
     </div>
