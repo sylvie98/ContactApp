@@ -1,21 +1,25 @@
-import React from "react"
+import React from "react";
+
 const Navigation = () => {
   return (
     <header>
-    <div className='bg-slate-400 flex  items-center justify-around'>
-    <h1 className="text-3xl font-bold ">Contacts</h1>
-    <a href='/'>Home</a>
-    <div className="flex bg-slate-500 gap-3 rounded-lg border border-gray-400">
-    <img src="https://icons.veryicon.com/png/o/internet--web/iview-3-x-icons/md-contact.png" alt="logo" className=" w-10"/>
-    <div>
-    <p>Sylvie</p>
-    <a href="#">sylviemasengesho5@gmail.com</a>
-    </div>
-    <button className=" rounded-lg border border-gray-400 bg-black text-white h-8 mt-5 mb-5">Sign out</button>
-    </div>
-   </div>
-   </header>
-  )
-}
+      <div className='bg-slate-400 flex  lg:flex-row items-center justify-around px-4 py-2 lg:px-8 lg:py-4'>
+        <a href='/' className="text-black">HOME</a>
+          <a href="#"className="text-black">CONTACT</a>
+          
+        <div className="flex items-center">
+          <img src="https://icons.veryicon.com/png/o/internet--web/iview-3-x-icons/md-contact.png" alt="logo" className="w-8 lg:w-10 mr-2 lg:mr-4"/>
+          
+          <div className="hidden lg:flex  items-end lg:items-center">
+            <p className="text-black">Sylvie</p>
+            <a href="#" className="text-black">sylviemasengesho5@gmail.com</a>
+            <button className="rounded-lg border border-gray-400 bg-black text-white px-4 py-2 mt-4">Sign out</button>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+  );
+};
 
-export default Navigation
+export default Navigation;
