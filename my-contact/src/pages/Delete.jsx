@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Delete, FetchContactById } from "../component/Api";
+import { Delete, FetchContactById } from "../component/Api1";
 import { useParams, useNavigate } from 'react-router-dom';
 import Navigation from "../component/Navigation";
 

@@ -1,27 +1,30 @@
-import React from 'react'
-import Navigation from './Navigation'
+import { Link } from "react-router-dom"
 
-const Contact = () => {
-  return (
-    <div>
-        <Navigation/>
-  <div className="flex flex-col items-center justify-center mt-12 gap-4 sm:flex-row sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24">
-    <div>
-      <p className='font-bold text-2xl'>sylvie masengesho</p>
-      <p>Email: sylviemasengesho5gmail.com</p>
-      <p>Phone: 0793896810</p>
-    </div>
-    <div className='flex gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24'>
-      <div className="bg-[#242424] text-white rounded-lg hover:bg-[#7D7B7B]">
-        <button className='p-4'><a href='/Update'>Update</a></button>
-      </div>
-      <div className="bg-[#EF4343] text-white rounded-lg hover:bg-[#7D7B7B]">
-        <button className='p-4'><a href='/Delete'>Delete</a></button>
-      </div>
-    </div>
-  </div>
-  </div>
-  )
+
+const Contact = ({ contact }) => {
+    return (
+        <Link
+            to={`${contact._id}`}
+            className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-slate-200"
+        >
+            {/* <span
+                className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+            ></span> */}
+
+            <div className="sm:flex sm:justify-between sm:gap-4">
+                <div><a href="/button">
+                    <h3 className="text-lg font-bold text-black sm:text-xl">
+                        {contact.fullName}
+                    </h3>
+                    <h5 className="text-lg font-bold text-black sm:text-base">
+                        {contact.email}
+                    </h5>
+                    <p className="mt-1 text-xs font-medium text-black">{contact.phone}</p></a>
+                </div>
+                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQTyJlXsGPXY7dry1ek3VG8CeRq1NXch5eccxPO7d812o4Zesw8" className=" lg:w-10 mr-2 lg:mr-4"/>
+            </div>
+        </Link>
+    )
 }
 
 export default Contact

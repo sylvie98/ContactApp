@@ -3,9 +3,9 @@ const API = import.meta.env.VITE_BASE_API;
 
 
 export const FetchContacts = () => {
-    return axios.get(API + "/Contact/list")
+    return axios.get(API + "/contact/list")
         .then((response) => {
-            return response.data.contacts;
+            return response.data.Api;
         })
         .catch((err) => {
             console.log(err);
@@ -15,9 +15,9 @@ export const FetchContacts = () => {
 
 
 export const FetchContactById = (id) => {
-    return axios.get(API + "/Contact/findById?id=" + id)
+    return axios.get(API + "/contact/findById?id=" + id)
         .then((response) => {
-            return response.data.Contact;
+            return response.data.Api;
         })
         .catch((err) => {
             console.log(err);
@@ -29,8 +29,8 @@ export const FetchContactById = (id) => {
 
 // };
 
-export const Add = (Contact) => {
-    return axios.post(`${API}/Api/add`, Contact)
+export const Add = (contact) => {
+    return axios.post(`${API}/contact/add`, contact)
         .then((response) => {
             console.log(response.data.message);
             return response.data.message;
@@ -42,7 +42,7 @@ export const Add = (Contact) => {
 };
 
 export const Delete = (id) => {
-    return axios.delete(API + "/Contact/delete?id=" + id)
+    return axios.delete(API + "/contact/delete?id=" + id)
         .then((response) => {
             console.log(response.data.message);
             return response.data.message;

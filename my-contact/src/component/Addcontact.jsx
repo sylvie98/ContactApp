@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Add } from "./Api";
+import { Add } from "./Api1";
 import { useNavigate } from "react-router-dom";
 import Navigation from './Navigation';
 
 const Addcontact = () => {
   const navigate = useNavigate();
-  const [Contact, setContact] = useState({
+  const [contact, setcontact] = useState({
     fullName: '',
     email: '',
     phone: ''
@@ -13,16 +13,20 @@ const Addcontact = () => {
 
   const handleSubmitContact = (event) => {
     event.preventDefault();
-    Add(Contact);
-    setContact({
+    Add(contact);
+    setcontact({
       fullName: '',
       email: '',
       phone: ''
     });
+    setTimeout(() => {
+      navigate("/");
+      
+    },2000)
   };
 
   const handleInput = (event) => {
-    setContact({ ...Contact, [event.target.name]: event.target.value });
+    setcontact({ ...contact, [event.target.name]: event.target.value });
   };
 
   return (
@@ -36,18 +40,18 @@ const Addcontact = () => {
           <div className='flex flex-col gap-5'>
             <label>Full Name</label>
             <div className='rounded-lg border border-gray-400 w-full lg:w-96 h-10'>
-              <input type='text' name='fullName' value={Contact.fullName} onChange={handleInput} placeholder="ENTER YOUR NAME" required/>
+              <input type='text' name='fullName' value={contact.fullName} onChange={handleInput} placeholder="ENTER YOUR NAME" required/>
             </div>
             <label>Email</label>
             <div className='rounded-lg border border-gray-400 w-full lg:w-96 h-10 relative'>
-              <input type='email' name='email' value={Contact.email} onChange={handleInput} placeholder="ENTER YOUR EMAIL" required/>
+              <input type='email' name='email' value={contact.email} onChange={handleInput} placeholder="ENTER YOUR EMAIL" required/>
             </div>
             <label>Phone</label>
             <div className='rounded-lg border border-gray-400 w-full lg:w-96 h-10'>
-              <input type='tel' name='phone' value={Contact.phone} onChange={handleInput} placeholder="ENTER YOUR PHONE NUMBER" required/>
+              <input type='tel' name='phone' value={contact.phone} onChange={handleInput} placeholder="ENTER YOUR PHONE NUMBER" required/>
             </div>
             <div className='rounded-lg border border-gray-400 w-full flex justify-center items-center bg-slate-500 text-white h-10 mt-5'>
-              <button type='submit'>ADD CONTACT</button>
+              <button type='submit' onClick={handleSubmitContact}>ADD CONTACT</button>
             </div>
           </div>
         </form>

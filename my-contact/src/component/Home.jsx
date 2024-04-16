@@ -1,10 +1,34 @@
-import React from 'react';
+import { useState, useEffect } from "react"
+import { FetchContacts } from './Api1';
+import Contact from './Contact';
 import Navigation from './Navigation';
+import axios from "axios";
+// import { Link } from 'react-router-dom';
+
+
 
 const Home = () => {
+  
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+      fetchContacts();
+  }, []);
+
+  const fetchContacts = () => {
+      axios.get('https://contact-app-server-nxgi.onrender.com/api/v1/contactapp/contact/list')
+          .then((res) => {
+              setContacts(res.data.contacts);
+          })
+          .catch((err) => {
+              console.log(err);
+              alert("Fetching contacts failed");
+          });
+  };
   return (
     <div>
       <Navigation />
+      
       <div className="bg-gray-100 p-4 lg:p-8">
         <div className="py-10 flex lg:flex-row justify-center lg:justify-around items-center px-4 lg:px-56 text-black gap-8 mt-4">
           <div className="text-xl lg:text-2xl">
@@ -14,27 +38,12 @@ const Home = () => {
             <button><a href="/Addcontact">Add New Contact</a></button>
           </div>
         </div>
-        <div className="space-y-4 py-5 px-4 lg:px-56">
-          <div className="bg-white p-4 rounded-md shadow">
-            <a href='/Contact' className="block">
-              <div className="flex flex-col lg:flex-row justify-between items-center">
-                <h2 className="text-lg lg:text-xl font-semibold">Sylvie Masengesho</h2>
-                <p className="text-gray-600 lg:mr-4">sylviemasengesho5@gmail.com</p>
-                <p className="text-gray-600">0793896810</p>
-              </div>
-            </a>
-          </div>
-          <div className="bg-white p-4 rounded-md shadow">
-            <a href='/Contact' className="block">
-              <div className="flex flex-col lg:flex-row justify-between items-center">
-                <h2 className="text-lg lg:text-xl font-semibold">Oliva Tuyishimire</h2>
-                <p className="text-gray-600 lg:mr-4">oliva@gmail.com</p>
-                <p className="text-gray-600">0791348662</p>
-              </div>
-            </a>
-          </div>
-        </div>
       </div>
+      <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+            {contacts && contacts.map((contact) => (
+              <Contact key={contact._id} contact={contact} />
+            ))}
+          </div>
     </div>
   );
 };
