@@ -44,18 +44,17 @@ const ContactDetails = () => {
 
   return (
     <>
-    <Navigation/>
-    <div className=" bg-gray-100 text-black flex  flex-col justify-center items-center gap-10 ">
-      <h1>Name: {Contact.fullName}</h1>
-      <p>Email: {Contact.email}</p>
-      <p>Phone: {Contact.phone}</p>
-      <div className="flex gap-5">
-      <button onClick={deleteContact} type="button" className="rounded border border-gray-400 bg-red-700">Delete</button>
+      <Navigation/>
+      <div className=" bg-gray-100 text-black flex  flex-col justify-center items-center gap-10 ">
+        <h1>Name: {Contact.fullName}</h1>
+        <p>Email: {Contact.email}</p>
+        <p>Phone: {Contact.phone}</p>
+        <div className="flex gap-5">
+          <button onClick={deleteContact} type="button" className="rounded border border-gray-400 bg-red-700">Delete</button>
+        </div>
+        {message.type === 'success' && <p className="px-3 py-2 text-green-700 bg-green-200 rounded-sm">{message.content}</p>}
+        {message.type === 'error' && <p className="px-3 py-2 text-red-700 bg-red-200 rounded-sm">{message.content}</p>}
       </div>
-      {message.type === 'success' && <p className="px-3 py-2 text-green-700 bg-green-200 rounded-sm">{message.content}</p>}
-      {message.type === 'error' && <p className="px-3 py-2 text-red-700 bg-red-200 rounded-sm">{message.content}</p>}
-
-    </div>
     </>
   )
 }

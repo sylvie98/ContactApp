@@ -3,8 +3,6 @@ import { FetchContacts } from './Api1';
 import Contact from './Contact';
 import Navigation from './Navigation';
 import axios from "axios";
-// import { Link } from 'react-router-dom';
-
 
 
 const Home = () => {
