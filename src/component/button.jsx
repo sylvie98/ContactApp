@@ -1,60 +1,74 @@
-import { useEffect, useState } from "react";
-import { Delete, FetchContactById } from "./Api1";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Delete, FetchContactById } from './Api1';
+import axios from 'axios';
 
 const Button = () => {
-    const params = useParams();
-    const navigate = useNavigate();
+  const { contactId } = useParams();
+  const navigate = useNavigate();
+  const [contact, setContact] = useState();
+  const [message, setMessage] = useState({
+    type: '',
+    content: '',
+  });
 
-    const [contact, setContact] = useState({});
-    const [message, setMessage] = useState({
-        type: '',
-        content: ''
-    });
+  useEffect(() => {
+    FetchContactById(contactId)
+  
+      .then((response) => {
+        console.log(response);
+        console.log('am the fetch')
+        setContact(contact);
+      })
+      
+      .catch((error) => {
+        console.log(error);
+      }); 
+        setMessage({
+          type: 'error',
+          content: 'Failed to fetch contact. Please try again later.',
+        });  
+  }, [contactId]);
 
-    useEffect(() => {
-        FetchContactById(params.contactId)
-            .then((response) => {
-                setContact(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [params.contactId]);
+  const deleteContact = (event) => {
+    event.preventDefault();
+    Delete(contactId)
+      .then((response) => {
+        setMessage({
+          type: 'success',
+          content: response,
+        }); 
 
-    const deleteContact = (event) => {
-        event.preventDefault();
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        setMessage({
+          type: 'error',
+          content: 'Failed to delete contact. Please try again later.',
+        });
+      });
+  };
 
-        Delete(params.contactId)
-            .then((response) => {
-                setMessage({
-                    type:'success',
-                    content: response
-                });
-                
-                setTimeout(() => {
-                    // Using react-router-dom to navigate to the homepage
-                    navigate('/');
-                }, 2000);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    return (
-        <div className="bg-black text-white flex flex-col justify-center items-center gap-10">
-            <h1>Name: {contact.fullName}</h1>
-            <p>Phone: {contact.phone}</p>
-            <p>Email: {contact.email}</p>
-            <div className="flex gap-5">
-                <button onClick={deleteContact} type="button" className="rounded border border-gray-400 bg-red-700">Delete</button>
-                <button className="rounded border border-gray-400 bg-blue-600">Update</button>
-            </div>
-            {message.type === 'success' && <p className="px-3 py-2 text-green-700 bg-green-200 rounded-sm">{message.content}</p>}
-            {message.type === 'error' && <p className="px-3 py-2 text-red-700 bg-red-200 rounded-sm">{message.content}</p>}
-        </div>
-    );
-};
+  return (
+    <div>
+      <h1>ID: <span>{contactId}</span>
+      </h1>
+      <h1>
+        Name: <span></span>
+      </h1>
+      <p>
+        Phone: <span></span>
+      </p>
+      <p>
+        Email: <span></span>
+      </p>
+      <button onClick={deleteContact} type="button" className="bg-red-200 items-center">DELETE</button>
+      <button type='submit' className=' bg-blue-500 text-white items-center'>UPDATE</button>
+    </div>
+  );
+}
 
 export default Button;

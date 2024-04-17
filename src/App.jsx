@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router,Routes ,Route} from "react-router-dom";
 import Home from './component/Home'
 import Addcontact from './component/Addcontact';
-import Button from './component/button';
+import Button from './component/Button';
 import Update from './pages/Update';
 import Delete from './pages/Delete';
 
