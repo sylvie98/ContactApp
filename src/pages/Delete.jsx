@@ -17,6 +17,7 @@ const ContactDetails = () => {
     FetchContactById(params.ContactId)
      .then((response) => {
         setContact(response);
+        console.log("am the delete from delete")
       })
       .catch((error) => {
         console.log(error);

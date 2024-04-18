@@ -20,7 +20,7 @@ const Addcontact = () => {
       phone: ''
     });
     setTimeout(() => {
-      navigate("/");
+      navigate("/Home");
       
     },2000)
   };

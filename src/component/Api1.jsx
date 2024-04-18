@@ -20,7 +20,6 @@ export const FetchContactById = (id) => {
             return response.data.Api;
         })
         .catch((err) => {
-            console.log(err);
             throw err;
         });
 };

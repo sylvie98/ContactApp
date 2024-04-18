@@ -1,15 +1,16 @@
+import React from "react";
 import { Link } from "react-router-dom";
-
+import { FetchContactById } from "./Api1";
 const Contact = ({ contact }) => {
     
     return (
         <Link
-            to={`/button/${contact._id}`} // Update the destination URL
+            to={`/ContactView/${contact._id}`} // Update the destination URL
             className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-slate-200"
         >
             <div className="sm:flex sm:justify-between sm:gap-4">
                 <div>
-                    <h3 className="text-lg font-bold text-black sm:text-xl">
+                <h3 className="text-lg font-bold text-black sm:text-xl">
                         {contact.fullName}
                     </h3>
                     <h5 className="text-lg font-bold text-black sm:text-base">
