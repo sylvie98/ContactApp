@@ -1,79 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Delete, FetchContactById } from './Api1';
-import Navigation from './Navigation';
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const ContactView= () => {
-  const params = useParams();
-  const navigate = useNavigate();
-  const [contact, setContact] = useState({});
-  const [message, setMessage] = useState({
-    type: '',
-    content: '',
-  });
+  const { contactId } = useParams();
+  const [contacts, setContacts] = useState();
+  const [ setLoading] = useState(true);
 
-  console.log(params.contactId)
+ const fetchContacts=(id)=> {
+    axios.get("https://contact-app-server-nxgi.onrender.com/api/v1/contactapp/contact/findById?id=" + id).then((response) => {
+        console.log(response.data.contact);
+        setContacts(response.data.contact);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+    };
+
+      const deleteContact = (id) => {
+        axios.delete( "https://contact-app-server-nxgi.onrender.com/api/v1/contactapp/contact/delete?id=" + id)
+        .then((resp) => {
+            console.log(resp.data);
+            fetchContacts(); 
+            alert("successfully deleted");
+            setContacts(null);
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Error deleting contact");
+        });
+     };
 
   useEffect(() => {
-    FetchContactById(params.ContactId)
-     .then((response) => {
-        setContact(response);
-        console.log(response)
-        console.log("am the responce from contactView")
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    fetchContacts(contactId);
+  },[contactId]);
 
-
-  const deleteContact = (event) => {
-    event.preventDefault();
-    Delete(params)
-      .then((response) => {
-        console.log("am the delete from contactView")
-        setMessage({
-          type: 'success',
-          content: response,
-        });
-        setTimeout(() => {
-          navigate("/Home");
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
-        setMessage({
-          type: 'error',
-          content: 'Failed to delete contact. Please try again later.',
-        });
-      });
-  };
-  return (
+  
+  return(
     <>
     <Navigation/>
-    <div className=' flex flex-col mt-10 gap-5 items-center p-5 container bg-gray-100'>
-      {message.type === 'error' && (
-        <div className="text-red-600">{message.content}</div>
-      )}
-      <div className=''>
-        <p className='text-xl mb-5'><span className='text-2xl'>ID:</span> {params.contactId}</p>
-        <p className='text-xl mb-5'><span >Name:</span> {params.fullname}</p>
-        <p className='text-xl mb-5'><span >Phone:</span> {contact.phone}</p>
-        <p className='text-xl mb-5'><span>Email:</span> {contact.email}</p>
+    <div className="min-h-screen  flex items-center justify-center bg-gray-200 ">
+    <div className="bg-white p-8 rounded-lg shadow-md">
+      <div className="flex flex-col items-center">
+        <p className="text-lg"><strong>FullName:</strong> {contacts ? contacts.fullName : "" }</p>
+        <p className="text-lg"><strong>Email:</strong> {contacts ? contacts.email : ""}</p>
+        <p className="text-lg"><strong>Phone:</strong> {contacts ? contacts.phone : ""}</p>
       </div>
-      <div className=' justify-evenly mr-5'>
-      <button onClick={deleteContact} type="button" className=" bg-blue-500 items-center w-20 p-2 mr-5 text-white">
-        Delete
-      </button>
-      <button type='button' className='bg-red-500 items-center w-20 p-2 text-white'>
-        Update
-       </button>
+      <div className="mt-4 flex justify-center">
+      <Link to={`/Update/${contactId}`}>
+        <button className="bg-cyan-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-4">
+          UPDATE
+        </button>
+        </Link>
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteContact(contactId)}>
+          DELETE
+        </button>
       </div>
     </div>
-    </>
-  );
+  </div>
+  </>
+);
 };
+
 
 export default ContactView
