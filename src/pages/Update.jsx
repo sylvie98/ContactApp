@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Navigation from "../component/Navigation";
 
 const Update = () => {
   const [fullName, setFullName] = useState("");
@@ -22,13 +23,13 @@ const Update = () => {
 
     axios
       .put(
-        `https://contact-app-server-nxgi.onrender.com/api/v1/contactapp/contact/Update?id=${id}`,
+        `https://contact-app-server-nxgi.onrender.com/api/v1/contactapp/contact/update?id=${id}`,
         updatedContact
       )
       .then((resp) => {
         console.log(resp.data);
-        alert("Mise à jour réussie");
-        navigate(`/details/${id}`);
+        alert("contact already changes");
+        navigate("/Home");
       })
       .catch((error) => {
         console.log(error);
@@ -57,9 +58,11 @@ const Update = () => {
   }, [contId]);
 
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div>
+      <Navigation/>
+    <div className='flex flex-col items-center justify-center mt-10 bg-gray-100'>
       <form>
-        <label>Full name</label>
+        <label>FullName:</label>
         <br></br>
         <input
           type="text"
@@ -69,7 +72,7 @@ const Update = () => {
         ></input>
         <br></br>
 
-        <label>Email</label>
+        <label>Email:</label>
         <br></br>
         <input
           type="text"
@@ -79,7 +82,7 @@ const Update = () => {
         ></input>
         <br></br>
 
-        <label>Phone</label>
+        <label>Phone:</label>
         <br></br>
         <input
           type="text"
@@ -90,12 +93,13 @@ const Update = () => {
         <br></br>
         <button
           type="button"
-          className="w-96 h-12 border-2 mt-4 bg-cyan-700 text-white"
+          className="w-96 h-12 border-2 mt-4 bg-slate-500 text-white"
           onClick={(e) => updateContact(e, contId)}
         >
           UPDATED
         </button>
       </form>
+    </div>
     </div>
   );
 };
