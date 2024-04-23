@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Add } from "./Api1";
-import { useNavigate ,Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navigation from './Navigation';
 
 
