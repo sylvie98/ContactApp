@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Add } from "./Api1";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import Navigation from './Navigation';
+
 
 const Addcontact = () => {
   const navigate = useNavigate();

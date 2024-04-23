@@ -3,6 +3,7 @@ import { FetchContacts } from './Api1';
 import Contact from './Contact';
 import Navigation from './Navigation';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -33,7 +34,8 @@ const Home = () => {
             <p>Welcome To Your Contact</p>
           </div>
           <div className="bg-[#242424]  text-white px-4 py-2 lg:py-4 rounded-lg hover:bg-[#D8D2D2]">
-            <button><a href="/Addcontact">Add New Contact</a></button>
+            <Link to={"/Addcontact"}>
+            <button><a >Add New Contact</a></button></Link>
           </div>
         </div>
       </div>
