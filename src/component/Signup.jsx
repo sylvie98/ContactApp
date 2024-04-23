@@ -28,7 +28,7 @@ const Signup = () => {
                         </div>
                         
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700"><ConfirmPassword></ConfirmPassword></label>
+                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">ConfirmPassword</label>
                             <input
                                 type="password"
                                 id="PasswordConfirmation"
