@@ -9,29 +9,11 @@ const Signup = () => {
              <div class="max-w-xl lg:max-w-3xl">
                     <form action="#" class="mt-8 grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="FirstName" class="block text-sm font-medium text-gray-700"> First Name</label>
+                            <label for="FirstName" class="block text-sm font-medium text-gray-700"> UserName</label>
                             <input
                                 type="text"
                                 id="FirstName"
                                 name="first_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                            />
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="LastName" class="block text-sm font-medium text-gray-700"> Last Name</label>
-                            <input
-                                type="text"
-                                id="LastName"
-                                name="last_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                />
-                        </div>
-                        <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
-                            <input
-                                type="email"
-                                id="Email"
-                                name="email"
                                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                             />
                         </div>
@@ -44,8 +26,9 @@ const Signup = () => {
                                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                             />
                         </div>
+                        
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">Password Confirmation</label>
+                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700"><ConfirmPassword></ConfirmPassword></label>
                             <input
                                 type="password"
                                 id="PasswordConfirmation"

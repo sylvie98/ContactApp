@@ -7,17 +7,8 @@ const Signin = () => {
          <main class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
              <div class="max-w-xl lg:max-w-3xl">
                     <form action="#" class="mt-8 grid grid-cols-6 gap-6">
-                        <div class="col-span-6 ">
-                            <label for="FirstName" class="block text-sm font-medium text-gray-700"> First Name</label>
-                            <input
-                                type="text"
-                                id="FirstName"
-                                name="first_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                            />
-                        </div>
                         <div class="col-span-6">
-                            <label for="LastName" class="block text-sm font-medium text-gray-700"> Last Name</label>
+                            <label for="LastName" class="block text-sm font-medium text-gray-700"> UserName</label>
                             <input
                                 type="text"
                                 id="LastName"
@@ -25,15 +16,7 @@ const Signin = () => {
                                 class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
                         </div>
-                        <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
-                            <input
-                                type="email"
-                                id="Email"
-                                name="email"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                            />
-                        </div>
+                        
                         <div class="col-span-6 ">
                             <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
                             <input
