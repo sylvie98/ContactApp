@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   return (
@@ -43,9 +44,12 @@ const Signin = () => {
                             />
                         </div>
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                            <button class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"> <a href='/Home'>LOGIN</a></button>
+                            <Link to={"/Home"}>
+                            <button class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"> LOGIN</button></Link>
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">if dont have accont?
-                                <a href="/Signup" class="text-gray-700 underline">Create an account</a>.
+                            <Link to={"/Signup"}>
+                                <a class="text-gray-700 underline">Create an account</a>.
+                            </Link>
                             </p>
                         </div>
                     </form>
